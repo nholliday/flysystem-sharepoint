@@ -43,11 +43,5 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:nholliday/sharepoint-api.git"
-        }
-    ]
+    "minimum-stability": "dev"
 }
