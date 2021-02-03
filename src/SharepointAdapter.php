@@ -42,28 +42,28 @@ class SharepointAdapter extends AbstractAdapter
 		return $this->upload($path, $resource);
 	}
 	
-	public function read($path)
+    public function read($path)
 	{
 		if (!$response = $this->readStream($path)) {
 			return false;
 		}
 		
-		$response['contents'] = stream_get_contents($response['response']);
+		$response['contents'] = stream_get_contents($response['stream']);
 		
-		fclose($response['response']);
+		fclose($response['stream']);
 		
-		unset($response['response']);
+		unset($response['stream']);
 		
 		return $response;
-	}
+    }
 	
 	public function readStream($path)
 	{
 		$path = $this->applyPathPrefix($path);
 		
-		$response = $this->client->download($path);
+		$stream = $this->client->download($path);
 		
-		return compact('response');
+		return compact('stream');
 	}
 	
 	protected function upload($path, $contents)
